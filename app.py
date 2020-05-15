@@ -1,7 +1,9 @@
 import datetime
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
+
+
 
 #@app.route("/")#cuando app routea a default va a index
 #def index():
@@ -12,6 +14,9 @@ app = Flask(__name__)
 #def lucho():
 #    return "que haces papa, luchito kpo"
 #para agregar rutas reiniciar flask
+
+
+
 @app.route("/")
 def index():
     return render_template("index.html")
@@ -35,7 +40,25 @@ def nuevoano():
 def lista():
     names=["luchi","bob","alice"]
     return render_template("name.html", names=names)
+@app.route("/inicio")
+def inicio():
+    return render_template("inicio.html")
 
+@app.route("/hola" , methods=["GET","POST"])
+def hola():
+    if request.method=="GET":
+        return "Por favor completa el formulario"
+    name=request.form.get("name")
+    return render_template("hola.html", name=name)
+
+notes=[]
+
+@app.route("/note", methods=["GET","POST"])
+def note():
+    if request.method=="POST":
+        note=request.form.get("note")
+        notes.append(note)
+    return render_template("note.html", notes=notes )
 
 
 #@app.route("/<string:name>")
