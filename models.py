@@ -10,6 +10,12 @@ class Flight(db.Model):
     destination = db.destination(db.String, nullable=False)
     duration = db.duration(db.String, nullable=False)
 
+    def __str__(self):
+        return f"{self.id} : {self.origin} to {self.destination}"
+
+    def is_valid_flight(self):
+        return self.origin != self.destination and self.duration >=0
+
 class Passenger(db.Model):
     """docstring for Passenger."""
     __tablename__="passengers"

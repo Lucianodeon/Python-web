@@ -1,0 +1,6 @@
+python 3 -c "from test0 import test_prime(1,False)"
+python 3 -c "from test0 import test_prime(2,True)"
+python 3 -c "from test0 import test_prime(8,False)"
+python 3 -c "from test0 import test_prime(11,True)"
+python 3 -c "from test0 import test_prime(25,False)"
+python 3 -c "from test0 import test_prime(28,False)"
